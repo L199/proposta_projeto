@@ -19,8 +19,10 @@ public class MovimentacaoService {
     }
 
     public List<Movimentacao> recuperarTodas(Long numeroConta) {
-        return movimentacaoRepo.findByConta_NumeroConta(numeroConta);
+        return movimentacaoRepo.findByContaNumeroConta(numeroConta);
     }
+    
+    
 
 }
 

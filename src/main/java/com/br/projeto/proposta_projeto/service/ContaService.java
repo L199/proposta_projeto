@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import com.br.projeto.proposta_projeto.model.Conta;
 import com.br.projeto.proposta_projeto.repository.ContaRepo;
 
-import lombok.AllArgsConstructor;
+
 
 
 @Service

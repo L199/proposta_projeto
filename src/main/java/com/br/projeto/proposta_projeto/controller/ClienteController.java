@@ -12,61 +12,41 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.br.projeto.proposta_projeto.dto.ClienteDTO;
 import com.br.projeto.proposta_projeto.model.Cliente;
 import com.br.projeto.proposta_projeto.service.ClienteService;
-
-
 
 @RestController
 @RequestMapping("/clientes")
 public class ClienteController {
-    
-    
+
     @Autowired
-    private ClienteService clienteService;
+    private ClienteService service;
 
+    //-	/clientes (POST) - chama o serviço cadastrarCliente 
+    //e pode retornar status 201 ou 400.
     @PostMapping
-    public ResponseEntity<Cliente> cadastrarCliente(@RequestBody Cliente cliente) {
-        Cliente novoCliente = clienteService.cadastrarCliente(cliente);
-        return ResponseEntity.status(HttpStatus.CREATED).body(novoCliente);
+    public ResponseEntity<Cliente> cadastrarCliente(@RequestBody Cliente c) {
+        Cliente clienteCadastrado = service.cadastrarCliente(c);
+        return new ResponseEntity<Cliente>(clienteCadastrado, HttpStatus.CREATED);
     }
-    
-    
-    
 
+    //-	/clientes (GET) - chama o serviço recuperarTodos
     @GetMapping
-    public ResponseEntity<List<Cliente>> listarClientes() {
-        List<Cliente> clientes = clienteService.recuperarTodos();
-        return ResponseEntity.ok(clientes);
+    public ResponseEntity<List<Cliente>> recuperarTodos() {
+        List<Cliente> clientes = service.recuperarTodos();
+        return new ResponseEntity<List<Cliente>>(clientes, HttpStatus.OK);
     }
-    
-    
-    
 
+
+    //-	/clientes/{id} (GET) - chama o serviço recuperarPeloId e 
+    //pode retornar status 200 ou 404 se o cliente não existir
     @GetMapping("/{id}")
-    public ResponseEntity<Cliente> recuperarClientePorId(@PathVariable Integer id) {
-        Cliente cliente = clienteService.recuperarPeloId(id);
-        if (cliente != null) {
-            return ResponseEntity.ok(cliente);
-        }
-        return ResponseEntity.notFound().build();
+    public ResponseEntity<Cliente> recuperarPeloID(@PathVariable Long id) {
+        Cliente cliente = service.recuperarPeloID(id);
+        return new ResponseEntity<Cliente>(cliente, HttpStatus.OK);
     }
-    
-    
-
-
-    
 }
-
-
-
-
-
-
-
-
-
-
 
 
 

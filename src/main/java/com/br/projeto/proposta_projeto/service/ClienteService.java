@@ -7,7 +7,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.br.projeto.proposta_projeto.dto.ClienteDTO;
 import com.br.projeto.proposta_projeto.exception.NotFoundException;
 import com.br.projeto.proposta_projeto.model.Cliente;
 

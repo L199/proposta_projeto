@@ -36,6 +36,28 @@ public class ContaService {
         return (List<Conta>) contaRepository.findAll();
     }
 
+    public Conta adicionarConta(Conta conta) {
+        Conta contaInserido= contaRepository.save(conta);
+        return contaInserido;
+    }
+
+    //////////////////////////////
+
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+   
+    
+    
+    
+
     /*public Conta adicionarConta(Conta conta) {
         clienteRepository.findById(conta.getCliente().getId());
         

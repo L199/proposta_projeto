@@ -37,6 +37,24 @@ public class ContaController {
         return new ResponseEntity<List<Conta>>(contas, HttpStatus.OK);
     }
 
+    /////////////////////////////////////////
+
+    
+    //-	/contas (POST) - para cadastrar uma nova conta, chamando o serviço
+     //adicionarConta, podendo retornar 201 ou 400
+    @PostMapping
+    public ResponseEntity<Conta> adicionarConta(@RequestBody Conta conta) {
+        Conta contaInserido = contaService.adicionarConta(conta);
+        if (contaInserido== null) {
+            return ResponseEntity.badRequest().build();
+        }
+        return ResponseEntity.status(HttpStatus.CREATED).body(contaInserido);
+    }
+   
+   
+   
+
+
    // @PostMapping
     //@ResponseStatus(HttpStatus.CREATED)
     //public Conta adicionarConta(@RequestBody Conta conta) {

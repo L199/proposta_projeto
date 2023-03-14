@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import com.br.projeto.proposta_projeto.exception.NotFoundException;
 import com.br.projeto.proposta_projeto.model.Cliente;
 import com.br.projeto.proposta_projeto.model.Conta;
-import com.br.projeto.proposta_projeto.model.Conta;
+
 import com.br.projeto.proposta_projeto.repository.ClienteRepo;
 import com.br.projeto.proposta_projeto.repository.ContaRepo;
 
@@ -44,8 +44,12 @@ public class ContaService {
 
 
     public List<Conta> recuperarContasPeloCliente(Long id) {
-        Cliente cliente = clienteRepository.findById(id).orElseThrow();
+        Optional<Cliente> cliente = clienteRepository.findById(id);
         return contaRepository.findByCliente(cliente);
+    }
+
+    public Conta alterarDados(Conta conta) {
+        return contaRepository.save(conta);
     }
 
     ////////////////////////

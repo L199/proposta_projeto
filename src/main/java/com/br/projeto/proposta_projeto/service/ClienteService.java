@@ -1,6 +1,6 @@
 package com.br.projeto.proposta_projeto.service;
 
-import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -11,8 +11,6 @@ import com.br.projeto.proposta_projeto.exception.NotFoundException;
 import com.br.projeto.proposta_projeto.model.Cliente;
 
 import com.br.projeto.proposta_projeto.repository.ClienteRepo;
-
-import lombok.RequiredArgsConstructor;
 
 
 

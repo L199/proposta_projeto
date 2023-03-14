@@ -13,5 +13,7 @@ public interface ContaRepo extends CrudRepository<Conta,Long> {
     //List<Conta> findByCliente(int idCliente);
     //List<Conta> findByClienteIdCliente(Long id);
 
+   // void save(Optional<Conta> contaOrigemObj);
+
    // Optional<Conta> findByNumero(int numero);
 }

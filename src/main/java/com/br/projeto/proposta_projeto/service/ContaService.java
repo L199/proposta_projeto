@@ -42,15 +42,34 @@ public class ContaService {
         return contaInserido;
     }
 
-    //////////////////////////////
 
     public List<Conta> recuperarContasPeloCliente(Long id) {
         Cliente cliente = clienteRepository.findById(id).orElseThrow();
         return contaRepository.findByCliente(cliente);
     }
 
-    
-    
+    ////////////////////////
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+   
+
+   
+   
+   
     
     
     

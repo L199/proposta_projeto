@@ -39,27 +39,28 @@ public class ContaController {
 
     /////////////////////////////////////////
 
-    
-    //-	/contas (POST) - para cadastrar uma nova conta, chamando o serviço
-     //adicionarConta, podendo retornar 201 ou 400
+    // - /contas (POST) - para cadastrar uma nova conta, chamando o serviço
+    // adicionarConta, podendo retornar 201 ou 400
     @PostMapping
     public ResponseEntity<Conta> adicionarConta(@RequestBody Conta conta) {
         Conta contaInserido = contaService.adicionarConta(conta);
-        if (contaInserido== null) {
+        if (contaInserido == null) {
             return ResponseEntity.badRequest().build();
         }
         return ResponseEntity.status(HttpStatus.CREATED).body(contaInserido);
     }
-   
-   
-   
 
+    @GetMapping("/cliente/{id}")
+    public ResponseEntity<List<Conta>> recuperarContasPeloCliente(@PathVariable Long id) {
+        List<Conta> conta = contaService.recuperarContasPeloCliente(id);
+        return ResponseEntity.ok().body(conta);
+    }
 
-   // @PostMapping
-    //@ResponseStatus(HttpStatus.CREATED)
-    //public Conta adicionarConta(@RequestBody Conta conta) {
-      //  contaService.adicionarConta(conta);
-    //}
+    // @PostMapping
+    // @ResponseStatus(HttpStatus.CREATED)
+    // public Conta adicionarConta(@RequestBody Conta conta) {
+    // contaService.adicionarConta(conta);
+    // }
 
     // - /contas/{id} (GET)- chama o serviço recuperarPeloNumero,
     // podendo retornar 200 ou 404sss

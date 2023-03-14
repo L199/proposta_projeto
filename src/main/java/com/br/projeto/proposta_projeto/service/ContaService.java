@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.br.projeto.proposta_projeto.exception.NotFoundException;
+import com.br.projeto.proposta_projeto.model.Cliente;
 import com.br.projeto.proposta_projeto.model.Conta;
 import com.br.projeto.proposta_projeto.model.Conta;
 import com.br.projeto.proposta_projeto.repository.ClienteRepo;
@@ -42,6 +43,11 @@ public class ContaService {
     }
 
     //////////////////////////////
+
+    public List<Conta> recuperarContasPeloCliente(Long id) {
+        Cliente cliente = clienteRepository.findById(id).orElseThrow();
+        return contaRepository.findByCliente(cliente);
+    }
 
     
     
